@@ -1,0 +1,33 @@
+/* -- NOTES TO SELF --
+* -- changed the square thumbnails into their regular shape by
+* -- unchecking a box in theme configuration --
+*/
+
+.content.item {
+   /* background-color:lime; */
+}
+
+.item-file {
+   /* width:30%; */
+   /* background-color:black; */
+   display: block;
+   position: relative;
+   margin:auto;
+  /* padding: 10px 90px; */
+}
+
+.tester {
+    display:none;
+}
+
+.item-file:hover .tester {
+    display:block;
+}
+
+#static-bubble img {
+   /* border:3px solid lime; */
+    display: block;
+    position: relative;
+    margin:auto;
+    padding: 10px 0;
+}

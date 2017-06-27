@@ -10,13 +10,30 @@
 ?>
 
 <!-- Texts. -->
-<?php echo all_element_texts('item'); ?>
+<div class="tester"><?php echo all_element_texts('item'); ?></div>
 
 <!-- Files. -->
 <?php if (metadata('item', 'has files')): ?>
   <h3><?php echo __('Files'); ?></h3>
-  <?php echo files_for_item(); ?>
-<?php endif; ?>
+    <div class="lightbocks"></div>
+
+        <?php
+        $files = $item->Files;
+        if($files) {
+            foreach($files as $file) {
+                if(preg_match('#^image#', $file->mime_type)) {
+                    echo file_image('fullsize', array('data-lightbox' => 'image'), $file);
+                }
+            }
+        }
+        ?>
+        
+     <?php echo files_for_item(
+          array('imageSize' => 'fullsize', 'linkAttributes' => array('data-lightbox' => 'image'))); ?>
+<?php endif; ?>        
+    </div>
+  
+
 <hr />
 
 <!-- Link. -->

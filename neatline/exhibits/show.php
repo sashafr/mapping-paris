@@ -8,7 +8,9 @@
  */
 
 ?>
-
+<?php queue_css_file('lightbox');?>
+<?php queue_js_file('lightbox');?>
+<?php queue_css_file('lightbox.min', 'all', false, 'lightbox/css'); ?>
 <?php queue_css_file('style'); ?>
 
 <?php echo head(array(
@@ -20,5 +22,7 @@
 <div class="exhibit">
   <?php echo nl_getExhibitMarkup(); ?>
 </div>
+
+<?php echo js_tag('lightbox.min', 'lightbox/js'); ?>
 
 <?php echo foot(); ?>
