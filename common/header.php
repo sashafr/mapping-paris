@@ -27,7 +27,6 @@
     <!-- CSS/JS. -->
     <?php queue_css_file('paris'); ?>
     <?php queue_css_file('record_images'); ?>
-    <?php queue_js_file('parisjs', 'js');?>
     <?php queue_css_file('lightbox');?>
     <?php queue_js_file('lightbox', 'js');?>
     <!--?php queue_css_file('lightbox.min', 'all', false, 'lightbox/css'); ?-->

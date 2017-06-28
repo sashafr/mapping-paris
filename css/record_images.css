@@ -17,7 +17,7 @@
 }
 
 .tester {
-    display:none;
+    /*display:none; */
 }
 
 .item-file:hover .tester {
