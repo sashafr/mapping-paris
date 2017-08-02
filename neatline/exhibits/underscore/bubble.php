@@ -9,36 +9,32 @@
 
 ?>
 
+<body onload = "populateSelector()">
 <script id="static-bubble-template" type="text/template">
 
-<?php echo sizeof($tags);
-
-/*echo $exhibitTags; */
-$items2 = get_records('Item');
-/*echo sizeof($items2); */
-$tags2 = get_records('Tag');
-/*echo sizeof($tags2);*/
-
-$neatlineExhibits = get_records('NeatlineRecord');
-echo "number of records is" . sizeof($neatlineExhibits);
-foreach($neatlineExhibits as $record) {
-    
+<?php 
+//get a list of all tags in the exhibit
+$neatlineRecords = get_records('NeatlineRecord');
+$tagList = array();
+//add the tags to a list
+foreach($neatlineRecords as $record) {
     $tags = nl_explode($record->tags);
-   
-    if (sizeof($tags) > 0){
     foreach($tags as $tag) {
-        echo $tag;
+        if($tag){
+    array_push ($tagList, $tag);
     }
     }
-   
 }
-
 ?> 
 
+   <!-- Filters -->
+    <select id = "tagSelector"  onChange = "filterByTag()" ><option value="init">(select by tag)</option></select>
 
-    
-  <!-- Close "X". -->
+    <button type="button" onclick = "showAll()">Show all</button>
+
   <div id = "bigdiv" style = "display:block">
+  
+  <!-- Close "X". -->
   <a name="close" class="close" onclick="clearNarrative()">&times;</a>
     
   <!-- Title. -->
@@ -49,21 +45,46 @@ foreach($neatlineExhibits as $record) {
   <hr class="content" rv-show="record:item" />
   <div class="content item" rv-html="record:item" rv-show="record:item"></div>
 
- 
- <!-- Filters -->
-<select id = "tagSelector"  onChange = "filterByTag()" ><option value="init">(select by tag)</option>
-  <option value="Test2">Test2</option>
-</select>
-<button type="button" onclick = "showAll()">Show all</button>
-  </div>
- <div id = "narrativeStuff" style = "display:block" onload = "divLoading()">
+<!-- Narrative -->
+ </div>   
+ <div id = "narrativeStuff" style = "display:block">
  <span> <?php echo nl_getExhibitField('narrative'); ?> </span>
- </div> 
- 
+ </div>
 
 </script>
 
+</body>
 <script type="text/javascript">
+
+function isInArray(value, array) {
+        return array.indexOf(value) > -1;
+    }
+
+//add tags to the tag selector
+function populateSelector() {
+var tagList = <?php echo json_encode($tagList);?>;
+var uniqueTagList = [];
+
+//only add tags that aren't already in the list
+for (var i = 0; i < tagList.length; i++){
+      var tag = tagList[i];
+            if (tag && isInArray(tag, uniqueTagList) == false) {
+                uniqueTagList.push(tag);
+            }
+}
+
+//sort the tags alphabetically, case-insensitive
+sortedTags = uniqueTagList.sort(function (a, b) {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+});
+
+//add the list of sorted tags to the selector
+for (var i = 0; i < sortedTags.length; i++){
+    var optionElement = document.createElement("option");
+    optionElement.innerHTML = sortedTags[i];
+    document.getElementById("tagSelector").appendChild(optionElement);
+}
+}
 
 //remove point information and return to the narrative when the user clicks the x
 function clearNarrative() {
@@ -71,19 +92,17 @@ function clearNarrative() {
        document.getElementById("narrativeStuff").style.display = "block";
     }    
 
+ //load the map based on tags
 function filterByTag(){
     var tag = document.getElementById("tagSelector").value;
      Neatline.execute('MAP:load', { tags: [tag] });
-    //  Neatline.execute('MAP:load', { tags: ['TestTag'] });
-    
 }
 
+   //load all tags
 function showAll(){
-   //Neatline.execute('MAP:load', {});
-   var url = window.url;
-   window.location.href = "http://pennds.org/melanieperon/neatline/fullscreen/test-exhibit";
-   //Neatline.vent.trigger('removeFilter', { key: 'tags' });
+    Neatline.execute('MAP:load', {tags: [] });
 }
+
 //listen for mouse movement
 document.onmousemove = handleMouseMove;
 
@@ -98,7 +117,7 @@ function handleMouseMove(event) {
        var top = point.getBoundingClientRect().top;
        //if the user's mouse location matches the location of a point (within a range to accomodate the radius of the point), show the point's information
       //The point radius can be set under the style tab for the individual item
-       if ((left - 15) < window.event.clientX &&  window.event.clientX < (left + 15) && (top - 15) < window.event.clientY &&  window.event.clientY <  (top + 15))
+       if ((left - 10) < window.event.clientX &&  window.event.clientX < (left + 10) && (top - 10) < window.event.clientY &&  window.event.clientY <  (top + 10))
        {
         document.getElementById("bigdiv").style.display = "block";
         document.getElementById("narrativeStuff").style.display = "none";
@@ -108,12 +127,12 @@ function handleMouseMove(event) {
  
  //this keeps the narrative and the point information from displaying together       
 if (document.getElementById("bigdiv").offsetHeight > 2 && document.getElementById("narrativeStuff").offsetHeight > 0) {
-    document.getElementById("narrativeStuff").style.display = "none";
+   document.getElementById("narrativeStuff").style.display = "none";
 }
 } //end function
   
     window.onclick = function(e) {
-     
+        
     //if the user clicked on a point, show the point's specific information    
     if (e.target.cx) {
       document.getElementById("bigdiv").style.display = "block";
@@ -129,6 +148,5 @@ if (document.getElementById("bigdiv").offsetHeight > 2 && document.getElementByI
        document.getElementById("narrativeStuff").style.display = "block";
     }
     } //end function
-
 
 </script>
