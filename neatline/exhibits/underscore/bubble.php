@@ -133,8 +133,14 @@ if (document.getElementById("bigdiv").offsetHeight > 2 && document.getElementByI
   
     window.onclick = function(e) {
         
-    //if the user clicked on a point, show the point's specific information    
+    //if the user clicked on a point, show the point's specific information. this only works for points
     if (e.target.cx) {
+      document.getElementById("bigdiv").style.display = "block";
+      document.getElementById("narrativeStuff").style.display = "none";
+    }
+    
+    //same thing but for shapes
+    if (e.target.d){
       document.getElementById("bigdiv").style.display = "block";
       document.getElementById("narrativeStuff").style.display = "none";
     }
