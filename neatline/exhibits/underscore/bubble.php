@@ -9,10 +9,16 @@
 
 ?>
 
-<body onload = "populateSelector()">
-<script id="static-bubble-template" type="text/template">
+<script>
 
-<?php 
+</script>
+
+<script id="static-bubble-template" type="text/template">
+<body onload = "populateSelector()">
+
+
+
+<?php
 //get a list of all tags in the exhibit
 $neatlineRecords = get_records('NeatlineRecord');
 $tagList = array();
@@ -25,7 +31,7 @@ foreach($neatlineRecords as $record) {
     }
     }
 }
-?> 
+?>
 
    <!-- Filters -->
     <select id = "tagSelector"  onChange = "filterByTag()" ><option value="init">(select by tag)</option></select>
@@ -33,10 +39,10 @@ foreach($neatlineRecords as $record) {
     <button type="button" onclick = "showAll()">Show all</button>
 
   <div id = "bigdiv" style = "display:block">
-  
+
   <!-- Close "X". -->
   <a name="close" class="close" onclick="clearNarrative()">&times;</a>
-    
+
   <!-- Title. -->
   <div class="title" rv-html="record:title"></div>
 
@@ -46,12 +52,12 @@ foreach($neatlineRecords as $record) {
   <div class="content item" rv-html="record:item" rv-show="record:item"></div>
 
 <!-- Narrative -->
- </div>   
+ </div>
  <div id = "narrativeStuff" style = "display:block">
  <span> <?php echo nl_getExhibitField('narrative'); ?> </span>
  </div>
 
-</script>
+Some stuff
 
 </body>
 <script type="text/javascript">
@@ -90,7 +96,7 @@ for (var i = 0; i < sortedTags.length; i++){
 function clearNarrative() {
        document.getElementById("bigdiv").style.display = "none";
        document.getElementById("narrativeStuff").style.display = "block";
-    }    
+    }
 
  //load the map based on tags
 function filterByTag(){
@@ -124,32 +130,32 @@ function handleMouseMove(event) {
        }
     }
 }
- 
- //this keeps the narrative and the point information from displaying together       
+
+ //this keeps the narrative and the point information from displaying together
 if (document.getElementById("bigdiv").offsetHeight > 2 && document.getElementById("narrativeStuff").offsetHeight > 0) {
    document.getElementById("narrativeStuff").style.display = "none";
 }
 } //end function
-  
+
     window.onclick = function(e) {
-        
+
     //if the user clicked on a point, show the point's specific information. this only works for points
     if (e.target.cx) {
       document.getElementById("bigdiv").style.display = "block";
       document.getElementById("narrativeStuff").style.display = "none";
     }
-    
+
     //same thing but for shapes
     if (e.target.d){
       document.getElementById("bigdiv").style.display = "block";
       document.getElementById("narrativeStuff").style.display = "none";
     }
-    
+
     //If the user clicks on the map, show the narrative
     var string = e.target.id;
     var substring = "OpenLayers_Layer_Vector_RootContainer";
     //This is necessary because the exact id of the map changes each time you load the page
-    if (string.indexOf(substring) != -1) { 
+    if (string.indexOf(substring) != -1) {
        document.getElementById("bigdiv").style.display = "none";
        document.getElementById("narrativeStuff").style.display = "block";
     }
