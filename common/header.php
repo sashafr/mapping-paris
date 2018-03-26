@@ -29,6 +29,7 @@
     <?php queue_css_file('record_images'); ?>
     <?php queue_css_file('lightbox');?>
     <?php queue_js_file('lightbox', 'js');?>
+    <?php queue_css_file('neatlite-najay');?>
     <!--?php queue_css_file('lightbox.min', 'all', false, 'lightbox/css'); ?-->
     <?php echo head_css(false); ?>
     <?php echo head_js(false); ?>
@@ -41,3 +42,15 @@
 
   <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
     <div class="container">
+
+      <!-- Header -->
+  			<header id="header">
+  				<div class="inner">
+  					<a href="index.html" class="logo">The <strong>Playground</strong></a>
+  					<nav id="nav">
+              <a href="#">test</a>
+              <?php echo public_nav_main(); ?>
+  					</nav>
+  					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+  				</div>
+  			</header>
