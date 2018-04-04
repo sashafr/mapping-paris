@@ -82,10 +82,6 @@
 		width: 20em;
 	}
 
-	.container {
-		width: 80em;
-	}
-
 	@media screen and (max-width: 1680px) {
 
 		.container.\31 25\25 {
@@ -2525,15 +2521,15 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: transparent;
-		box-shadow: inset 0 0 0 3px #6cc091;
-		color: #6cc091 !important;
-		border-radius: 30px;
+		background-color: #ffcc9926;
+		box-shadow: inset 0 0 0 2px #aa66dd;
+		color: #aa99dd !important;
+		border-radius: 70px;
 		border: 0;
 		cursor: pointer;
 		display: inline-block;
-		font-size: .75em;
-		font-weight: 400;
+		font-size: .7em;
+		font-weight: 700;
 		height: 3.75em;
 		line-height: 3.85em;
 		letter-spacing: 2px;
@@ -2917,7 +2913,7 @@
 
 	#banner {
 		padding: 8em 0 9em 0;
-		background-image: url(../../images/banner.jpg);
+		background-image: url(../images/banner.jpg);
 		background-size: cover;
 		background-position: bottom;
 		background-attachment: fixed;
@@ -2940,7 +2936,7 @@
 			border-top: 2px solid rgba(255, 255, 255, 0.2);
 			position: relative;
 			z-index: 10005;
-			padding-top: 8em;
+			padding-top: 9em;
 		}
 
 		#banner h1 {
@@ -3110,9 +3106,9 @@
 /* Footer */
 
 	#footer {
-		padding: 6em 0;
-		background: #6cc091;
-		color: #fff;
+		padding: 0;
+		background: #D99AC5;
+		color: #AA7BC3;
 		text-align: center;
 	}
 

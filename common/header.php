@@ -9,6 +9,8 @@
 
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">
 
@@ -44,13 +46,14 @@
     <div class="container">
 
       <!-- Header -->
-  			<header id="header">
-  				<div class="inner">
-  					<a href="index.html" class="logo">The <strong>Playground</strong></a>
-  					<nav id="nav">
-              <a href="#">test</a>
-              <?php echo public_nav_main(); ?>
-  					</nav>
-  					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-  				</div>
-  			</header>
+      <header id="header">
+        <div class="inner">
+          <a href="index.php" class="logo">The <strong>Playground</strong></a>
+          <nav id="nav">
+            <?php echo link_to_items_browse("Browse Items") ?>
+            <?php echo link_to("Collections", "browse", "Browse Collections") ?>
+            <?php echo link_to("NeatlineExhibit", "browse", "Neatline") ?>
+          </nav>
+          <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+      </header>
