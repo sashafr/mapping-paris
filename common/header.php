@@ -9,8 +9,6 @@
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">
 
@@ -56,4 +54,5 @@
           </nav>
           <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
+
       </header>

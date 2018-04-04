@@ -10,21 +10,21 @@
 ?>
 
 <footer id="footer">
-  <div id="custom-footer-text">
-      <?php if ( $footerText = get_theme_option('Footer Text') ): ?>
-      <p><?php echo $footerText; ?></p>
-      <?php endif; ?>
-      <?php if ((get_theme_option('Display Footer Copyright') == 1) && $copyright = option('copyright')): ?>
-          <p><?php echo $copyright; ?></p>
-      <?php endif; ?>
-  </div>
+  <div class="inner">
 
-  <p><?php echo __('Proudly powered by <strong>Omeka<strong></a>.'); ?></p>
+    <h3>What are you looking for?</h3>
 
-<?php fire_plugin_hook('public_footer', array('view' => $this)); ?>
-</footer>
-
-</div><!--end wrap-->
+    <form action="#" method="post">
+      <div id="search-container" role="search">
+          <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
+          <?php echo search_form(array('show_advanced' => true)); ?>
+          <?php else: ?>
+          <?Php echo search_form(); ?>
+          <?php endif; ?>
+      </div>
+    <div class="copyright">
+      &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+    </div><!--end wrap-->
 
 <script type="text/javascript">
 jQuery(document).ready(function () {
