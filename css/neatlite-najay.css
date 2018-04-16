@@ -1585,7 +1585,7 @@
 		font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
 		font-size: 14pt;
 		font-weight: 400;
-		line-height: 1.65;
+		line-height: 4;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -1970,10 +1970,10 @@
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background: #6cc091;
+		background: #503D6C;
 		border-radius: 10px;
 		border: none;
-		border: solid 2px #8dcca9;
+		border: solid 1px #AAA4EA;
 		color: #fff;
 		display: block;
 		outline: 0;
@@ -2528,7 +2528,7 @@
 		border: 0;
 		cursor: pointer;
 		display: inline-block;
-		font-size: .7em;
+		font-size: .8em;
 		font-weight: 700;
 		height: 3.75em;
 		line-height: 3.85em;
@@ -2536,7 +2536,6 @@
 		padding: 0 4em;
 		text-align: center;
 		text-decoration: none;
-		text-transform: uppercase;
 		white-space: nowrap;
 	}
 
@@ -2701,7 +2700,7 @@
 		}
 
 	#header {
-		color: #fff;
+		color: #BE97C6;
 		cursor: default;
 		height: 3.25em;
 		left: 0;
@@ -2719,7 +2718,7 @@
 		}
 
 		#header .logo {
-			color: #ffffff;
+			color: #BE97C6;
 			display: inline-block;
 			font-weight: 400;
 			height: inherit;
@@ -2733,7 +2732,7 @@
 		}
 
 			#header .logo strong {
-				color: #ffffff;
+				color: #BE97C6;
 				font-weight: 600;
 			}
 
@@ -2933,10 +2932,10 @@
 		}
 
 		#banner .inner {
-			border-top: 2px solid rgba(255, 255, 255, 0.2);
+			border-top: 0px solid rgba(255, 255, 255, 0.2);
 			position: relative;
 			z-index: 10005;
-			padding-top: 9em;
+			padding-top: 1px;
 		}
 
 		#banner h1 {
@@ -3107,14 +3106,15 @@
 
 	#footer {
 		padding: 0;
-		background: #39A2AE;
+		background: #2E294E;
 		color: #AA7BC3;
 		text-align: center;
 	}
 
 		#footer h3 {
 			color: #FFF;
-			margin-bottom: 2em !important;
+			margin-bottom: 1em !important;
+			font-family: 'Satisfy', cursive !important;
 		}
 
 		#footer label {
@@ -3151,5 +3151,12 @@
 			#footer {
 				padding: 3em 0;
 			}
-
 		}
+
+			#query-types input { text-align: right; }
+
+			#content {
+				padding: 7em 0 0 0;
+				font-family: 'Satisfy', cursive;
+
+			}

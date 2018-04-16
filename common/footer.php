@@ -8,12 +8,12 @@
  */
 
 ?>
+</div>
 
 <footer id="footer">
   <div class="inner">
 
     <h3>What are you looking for?</h3>
-
     <form action="#" method="post">
       <div id="search-container" role="search">
           <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
