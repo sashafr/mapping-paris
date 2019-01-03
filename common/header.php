@@ -1,60 +1,73 @@
-<?php
-
-/**
- * @package     omeka
- * @subpackage  neatline-NeatLight
- * @copyright   2014 Rector and Board of Visitors, University of Virginia
- * @license     http://www.apache.org/licenses/LICENSE-2.0.html
- */
-
-?>
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="<?php echo get_html_lang(); ?>">
+	<head>
+		<meta charset="utf-8" />
+    <?php if ( $description = option('description')): ?>
+        <meta name="description" content="<?php echo $description; ?>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php endif; ?>
+		<link rel="stylesheet" href="themes/mapping-paris/css/neatlite-najay.css" />
+	</head>
+	<body class="landing is-preload">
+		<div id="page-wrapper">
 
-  <head>
 
-    <meta charset="utf-8">
 
-    <title>
-      <?php echo option('site_title');
-      echo isset($title) ? ' | ' . $title : ''; ?>
-    </title>
+      <?php
+      if (isset($title)) {
+          $titleParts[] = strip_formatting($title);
+      }
+      $titleParts[] = option('site_title');
+      ?>
+      <title><?php echo implode(' &middot; ', $titleParts); ?></title>
 
-    <!-- Google analytics. -->
-    <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
+      <?php echo auto_discovery_link_tags(); ?>
 
-    <!-- CSS/JS. -->
-    <?php queue_css_file('paris'); ?>
-    <?php queue_css_file('record_images'); ?>
-    <?php queue_css_file('lightbox');?>
-    <?php queue_js_file('lightbox', 'js');?>
-    <?php queue_css_file('neatlite-najay');?>
-    <!--?php queue_css_file('lightbox.min', 'all', false, 'lightbox/css'); ?-->
-    <?php echo head_css(false); ?>
-    <?php echo head_js(false); ?>
+      <?php
+      $title = (isset($title)) ? $title : null;
+      $item = (isset($item)) ? $item : null;
+      $tour = (isset($tour)) ? $tour : null;
+      $file = (isset($file)) ? $file : null;
+      ?>
 
-    <!-- Typekit. -->
-    <script src="//use.typekit.net/ray7ejh.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
-    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="index.php">Mapping Paris</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.php">Home</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Navigation Dropdown</a>
+								<ul>
+									<li><a href="generic.php">Generic</a></li>
+									<li><a href="contact.php">Contact</a></li>
+									<li><a href="elements.php">Elements</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button">Sign In</a></li>
+						</ul>
+					</nav>
+				</header>
 
-  </head>
+		</div>
 
-  <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
-    <div class="container">
+		<!-- Scripts -->
+			<script src="themes/mapping-paris/js/jquery.min.js"></script>
+			<script src="themes/mapping-paris/js/jquery.dropotron.min.js"></script>
+			<script src="themes/mapping-paris/js/jquery.scrollex.min.js"></script>
+			<script src="themes/mapping-paris/js/browser.min.js"></script>
+			<script src="themes/mapping-paris/js/breakpoints.min.js"></script>
+			<script src="themes/mapping-paris/js/util.js"></script>
+			<script src="themes/mapping-paris/js/main.js"></script>
 
-      <!-- Header -->
-      <header id="header">
-        <div class="inner">
-          <a href="index.php" class="logo">The <strong>Playground</strong></a>
-          <nav id="nav">
-            <?php echo link_to_items_browse("Browse Items") ?>
-            <?php echo link_to("Collections", "browse", "Browse Collections") ?>
-            <?php echo link_to("NeatlineExhibit", "browse", "Neatline") ?>
-          </nav>
-          <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
-      </header>
-
-      <div id="content">
+	</body>
+</php>
