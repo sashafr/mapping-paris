@@ -2916,7 +2916,7 @@
 		background: #444;
 		color: #bbb;
 		cursor: default;
-		height: 3.25em;
+		height: 3.4em;
 		left: 0;
 		line-height: 3.25em;
 		position: fixed;
@@ -3040,6 +3040,7 @@
 			-webkit-animation: reveal-header 0.5s;
 			-ms-animation: reveal-header 0.5s;
 			animation: reveal-header 0.5s;
+			top: 0;
 		}
 
 		#header.alt {
@@ -3050,6 +3051,7 @@
 			background: none;
 			color: rgba(255, 255, 255, 0.75);
 			position: absolute;
+			top: unset;
 		}
 
 			#header.alt nav > ul > li a:not(.button).icon:before {
