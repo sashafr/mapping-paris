@@ -11,13 +11,14 @@
           <?php fire_plugin_hook('public_footer', array('view'=>$this)); ?>
         </footer>
               
-  <script type="text/javascript">
-  jQuery(document).ready(function () {
-      Omeka.showAdvancedForm();
-      Omeka.skipNav();
-      Omeka.megaMenu("#top-nav");
-      Seasons.mobileSelectNav();
-  });
-  </script>
+		<!-- Scripts -->
+			<script src="<?php echo src('jquery.dropotron.min', 'javascripts', 'js'); ?>"></script>
+			<script src="<?php echo src('jquery.scrollex.min', 'javascripts', 'js'); ?>"></script>
+			<script src="<?php echo src('browser.min', 'javascripts', 'js'); ?>"></script>
+			<script src="<?php echo src('breakpoints.min', 'javascripts', 'js'); ?>"></script>
+			<script src="<?php echo src('util', 'javascripts', 'js'); ?>"></script>
+			<script src="<?php echo src('main', 'javascripts', 'js'); ?>"></script>
+
+
 </body>
 </html>
