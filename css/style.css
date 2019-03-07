@@ -6,7 +6,7 @@
 	Alpha by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-	
+
 	(PennDS additions at the end)
 */
 
@@ -2920,7 +2920,7 @@
 		left: 0;
 		line-height: 3.25em;
 		position: fixed;
-		/* top: 0; - removed to make room for Omeka admin nav*/ 
+		/* top: 0; - removed to make room for Omeka admin nav*/
 		width: 100%;
 		z-index: 10000;
 	}
@@ -3876,7 +3876,7 @@
 			}
 
 	}
-	
+
 /* Begin additions by PennDS Team */
 
 /* Search Form */
@@ -3911,4 +3911,13 @@
     cursor: pointer;
     vertical-align: middle;
     font-size: 100%;
+}
+
+/* Images */
+.mp-featured {
+    max-width: 100%;
+}
+
+.mp-featured-box {
+    margin: 0 !important;
 }

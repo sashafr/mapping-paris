@@ -1,19 +1,21 @@
 			<!-- Footer -->
 				<footer id="footer" role="contentinfo">
-					<ul class="icons">
-						<?php if(get_theme_option('twitter_username')): ?>
-						    <li><a href="https://twitter.com/<?php echo (get_theme_option('twitter_username')) ?>" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <?php endif; ?>
-						<?php if(get_theme_option('facebook_link')): ?>
-						    <li><a href="<?php echo (get_theme_option('facebook_link')) ?>" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <?php endif; ?>
-                        <?php if(get_theme_option('instagram_username')): ?>
-                            <li><a href="https://www.instagram.com/<?php echo (get_theme_option('instagram_username')) ?>" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <?php endif; ?>
-						<?php if(get_theme_option('github_link')): ?>
-						    <li><a href="<?php echo (get_theme_option('github_link')) ?>" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <?php endif; ?>
-					</ul>
+                    <?php if (!is_current_url(url('/'))): ?>
+                        <ul class="icons">
+    						<?php if(get_theme_option('twitter_username')): ?>
+    						    <li><a href="https://twitter.com/<?php echo (get_theme_option('twitter_username')) ?>" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                            <?php endif; ?>
+    						<?php if(get_theme_option('facebook_link')): ?>
+    						    <li><a href="<?php echo (get_theme_option('facebook_link')) ?>" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <?php endif; ?>
+                            <?php if(get_theme_option('instagram_username')): ?>
+                                <li><a href="https://www.instagram.com/<?php echo (get_theme_option('instagram_username')) ?>" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                            <?php endif; ?>
+    						<?php if(get_theme_option('github_link')): ?>
+    						    <li><a href="<?php echo (get_theme_option('github_link')) ?>" class="icon fa-github"><span class="label">Github</span></a></li>
+                            <?php endif; ?>
+    					</ul>
+                    <?php endif; ?>
 					<ul class="copyright">
 						<li><?php echo get_theme_option('Footer Text'); ?></li>
 						<li>Theme developed by the <a href="https://github.com/upenndigitalscholarship">Penn Libraries</a></li>

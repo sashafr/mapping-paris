@@ -10,9 +10,10 @@
 
 	<!-- Main -->
 		<section id="main" class="container">
-		    
+
+            <!-- Neatline Exhibits -->
             <?php if (plugin_is_active('Neatline')): ?>
-		    
+
     			<section class="box special features">
     		        <?php set_loop_records('NeatlineExhibits', get_records('NeatlineExhibit')); ?>
     		        <?php $loop_index = 0; ?>
@@ -30,52 +31,121 @@
 
             <?php endif; ?>
 
+            <!-- Configurable featured sections -->
 			<div class="row">
-				<div class="col-6 col-12-narrower">
+                <?php if (get_theme_option('Display Featured Item') !== '0'): ?>
+                    <?php $feat_item = get_random_featured_items(1); ?>
+                    <?php if (count($feat_item) > 0): ?>
+        				<div class="col-6 col-12-narrower">
+        					<section class="box special">
+        						<span class="mp-featured-box icon major"><?php echo item_image('square_thumbnail', array('class' => 'mp-featured'), null, $feat_item[0]); ?></span>
+        						<h3><?php echo link_to_item(metadata($feat_item[0], array('Dublin Core', 'Title')), null, null, $feat_item[0]); ?></h3>
+        						<p><?php echo metadata($feat_item[0], array('Dublin Core', 'Description')); ?></p>
+        						<ul class="actions special">
+        							<li><?php echo link_to_item("Learn More", array('class' => 'button alt'), null, $feat_item[0]); ?></li>
+        						</ul>
+        					</section>
+        				</div>
+                    <?php endif; ?>
+                <?php endif; ?>
 
-					<section class="box special">
-						<span class="image featured"><img src="images/pic02.jpg" alt="" /></span>
-						<h3>Sed lorem adipiscing</h3>
-						<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
+                <?php if (get_theme_option('Display Featured Collection') !== '0'): ?>
+                    <?php $feat_col = get_random_featured_collection(); ?>
+                    <?php if ($feat_col): ?>
+        				<div class="col-6 col-12-narrower">
+        					<section class="box special">
+                                <?php $col_item = get_record('Item', array('collection' => $feat_col)); ?>
+                                <?php if ($col_item): ?>
+                                    <span class="mp-featured-box icon major"><?php echo item_image('square_thumbnail', array('class' => 'mp-featured'), null, $col_item); ?></span>
+                                <?php endif; ?>
+        						<h3><?php echo link_to_collection(metadata($feat_col, array('Dublin Core', 'Title')), null, null, $feat_col); ?></h3>
+        						<p><?php echo metadata($feat_col, array('Dublin Core', 'Description')); ?></p>
+        						<ul class="actions special">
+        							<li><?php echo link_to_collection("Learn More", array('class' => 'button alt'), null, $feat_col); ?></li>
+        						</ul>
+        					</section>
+        				</div>
+                    <?php endif; ?>
+                <?php endif; ?>
 
-				</div>
-				<div class="col-6 col-12-narrower">
+                <?php if ((get_theme_option('Display Featured Exhibit') !== '0') && plugin_is_active('ExhibitBuilder') && function_exists('exhibit_builder_display_random_featured_exhibit')): ?>
+                    <?php $feat_ex = exhibit_builder_random_featured_exhibit(); ?>
+                    <?php if ($feat_ex): ?>
+        				<div class="col-6 col-12-narrower">
+        					<section class="box special">
+        						<h3><?php echo exhibit_builder_link_to_exhibit($feat_ex); ?></h3>
+        						<p><?php echo strip_formatting(metadata($feat_ex, 'description', array('snippet' => 200))); ?></p>
+        						<ul class="actions special">
+        							<li><?php echo exhibit_builder_link_to_exhibit($feat_ex, "Learn More", array('class' => 'button alt'), null); ?></li>
+        						</ul>
+        					</section>
+        				</div>
+                    <?php endif; ?>
+                <?php endif; ?>
 
-					<section class="box special">
-						<span class="image featured"><img src="images/pic03.jpg" alt="" /></span>
-						<h3>Accumsan integer</h3>
-						<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-
-				</div>
 			</div>
 
+            <!-- Recent Items -->
+
+            <?php
+                $recentItems = get_theme_option('Homepage Recent Items');
+                if ($recentItems === null || $recentItems === ''):
+                    $recentItems = 4;
+                else:
+                    $recentItems = (int) $recentItems;
+                endif;
+                if ($recentItems):
+            ?>
+                <section class="box special features">
+                    <?php set_loop_records('Item', get_recent_items($recentItems)); ?>
+                    <?php $loop_index = 0; ?>
+                    <?php foreach (loop('Item') as $rec_item): ?>
+                        <?php if ($loop_index % 2 == 0): ?><div class="features-row"><?php endif ?>
+                            <section>
+                                <h3><?php echo link_to_item(metadata($rec_item, array('Dublin Core', 'Title')), null, null, $rec_item) ?></h3>
+                                <p><?php echo strip_formatting(metadata($rec_item, array('Dublin Core', 'Description'), array('snippet' => 200))) ?></p>
+                            </section>
+                        <?php if ($loop_index % 2 == 1): ?></div><?php endif ?>
+                        <?php $loop_index++; ?>
+                    <?php endforeach ?>
+                    <?php if ($recentItems % 2 == 1): ?><section>&nbsp;</section></div><?php endif ?> <!-- have to add a blank section if number of recent items is odd to make the formatting consistent -->
+                </section>
+            <?php endif; ?>
+
+        <?php fire_plugin_hook('public_home', array('view' => $this)); ?>
+
 		</section>
 
-	<!-- CTA -->
+	    <!-- Contact Us -->
 		<section id="cta">
 
-			<h2>Sign up for beta access</h2>
-			<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
+			<h2>Contact Us</h2>
+            <ul class="icons">
+                <?php if(get_theme_option('twitter_username')): ?>
+                    <li><a href="https://twitter.com/<?php echo (get_theme_option('twitter_username')) ?>" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <?php endif; ?>
+                <?php if(get_theme_option('facebook_link')): ?>
+                    <li><a href="<?php echo (get_theme_option('facebook_link')) ?>" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <?php endif; ?>
+                <?php if(get_theme_option('instagram_username')): ?>
+                    <li><a href="https://www.instagram.com/<?php echo (get_theme_option('instagram_username')) ?>" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                <?php endif; ?>
+                <?php if(get_theme_option('github_link')): ?>
+                    <li><a href="<?php echo (get_theme_option('github_link')) ?>" class="icon fa-github"><span class="label">Github</span></a></li>
+                <?php endif; ?>
+            </ul>
 
-			<form>
-				<div class="row gtr-50 gtr-uniform">
-					<div class="col-8 col-12-mobilep">
-						<input type="email" name="email" id="email" placeholder="Email Address" />
-					</div>
-					<div class="col-4 col-12-mobilep">
-						<input type="submit" value="Sign Up" class="fit" />
-					</div>
-				</div>
-			</form>
+            <!-- This is only a form because I wanted to use the button styles from this template that come with the form... >_< -->
+            <?php if (get_theme_option('email_us') != ''): ?>
+    			<form action="mailto:<?php echo get_theme_option('email_us'); ?>" method="post" enctype="text/plain">
+    				<div class="row gtr-50 gtr-uniform">
+    					<div class="col-12 col-12-mobilep">
+    						<input type="submit" value="Email Us" class="fit" />
+    					</div>
+    				</div>
+    			</form>
+            <?php endif; ?>
 
 		</section>
-		
+
 <?php echo foot(); ?>
