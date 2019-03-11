@@ -6,7 +6,6 @@
         <meta name="description" content="<?php echo $description; ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php endif; ?>
-
     <?php
     if (isset($title)) {
         $titleParts[] = strip_formatting($title);
@@ -41,11 +40,45 @@
         <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
         <h1> <?php echo link_to_home_page(option('site_title')); ?> </h1>
 
+        <!--
         <div id="search-container" role="search">
           <?php echo search_form(array()); ?>
         </div>
+        -->
 
-        <nav id="nav" role="navigation">
-           <?php echo public_nav_main(); ?>
+        <section id="cta">
+          <div id="search-container" role="search">
+            <div class="row gtr-50 gtr-uniform">
+              <div class="col-8 col-12-mobilep">
+                <?php echo search_form(array()); ?>
+              </div>
+              <div class="col-4 col-12-mobilep">
+                <input type="submit" value="Sign Up" class="fit" />
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <nav id="nav">
+          <ul>
+            <li><a href="index.php">Home</a></li>
+            <li>
+              <a href="#" class="icon fa-angle-down">Menu</a>
+              <ul>
+                <?php echo public_nav_main(); ?>
+                <li>
+                  <a href="#">Submenu</a>
+                  <ul>
+                    <li><a href="#">Option One</a></li>
+                    <li><a href="#">Option Two</a></li>
+                    <li><a href="#">Option Three</a></li>
+                    <li><a href="#">Option Four</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#" class="button">Sign Up</a></li>
+          </ul>
         </nav>
     </header>

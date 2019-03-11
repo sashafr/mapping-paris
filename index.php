@@ -2,8 +2,10 @@
 
 <!-- Banner -->
 	<section id="banner">
-		<h2>Alpha</h2>
-		<p>[this is where we will explain what this project is - mapping paris is... (not too sure)].</p>
+		<h2> <?php echo link_to_home_page(option('site_title')); ?> </h2>
+			<img src="<?php echo WEB_ROOT.'/files/theme_uploads/'.get_theme_option('header_image'); ?>" style="width:100%;height:auto;" align="center">
+		<p> <?php echo get_theme_option('about'); ?> </p>
+
 		<ul class="actions special">
 			<li><a href="#" class="button primary">Sign Up</a></li>
 			<li><a href="#" class="button">Learn More</a></li>
