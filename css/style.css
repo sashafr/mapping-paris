@@ -2,9 +2,12 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
 
 /*
+	Based on:
 	Alpha by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+	(PennDS additions at the end)
 */
 
 /* Reset */
@@ -2861,11 +2864,11 @@
 
 /* Header */
 
-	#push {
+	#page-wrapper {
 		padding-top: 3em;
 	}
 
-	body.landing #push {
+	body.landing #page-wrapper {
 		padding-top: 0;
 	}
 
@@ -2913,10 +2916,11 @@
 		background: #444;
 		color: #bbb;
 		cursor: default;
-		height: 3.25em;
+		height: 3.4em;
 		left: 0;
 		line-height: 3.25em;
 		position: fixed;
+		/* top: 0; - removed to make room for Omeka admin nav*/
 		width: 100%;
 		z-index: 10000;
 	}
@@ -2951,6 +2955,7 @@
 				list-style: none;
 				margin: 0;
 				padding-left: 0;
+				display: inline-block;
 			}
 
 				#header nav > ul > li {
@@ -3035,6 +3040,7 @@
 			-webkit-animation: reveal-header 0.5s;
 			-ms-animation: reveal-header 0.5s;
 			animation: reveal-header 0.5s;
+			top: 0;
 		}
 
 		#header.alt {
@@ -3043,8 +3049,9 @@
 			-ms-animation: none;
 			animation: none;
 			background: none;
-			color: rgb(102, 102, 102);
+			color: rgba(255, 255, 255, 0.75);
 			position: absolute;
+			top: unset;
 		}
 
 			#header.alt nav > ul > li a:not(.button).icon:before {
@@ -3139,12 +3146,11 @@
 /* Banner */
 
 	#banner {
-		background-attachment: scroll,							fixed;
+		background-attachment: fixed;
 		background-color: #666;
-		background-image: url("images/overlay.png"), url("../../images/banner.jpg");
-		background-position: top left,						center center;
-		background-repeat: repeat,							no-repeat;
-		background-size: auto,							cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
 		color: #fff;
 		padding: 12em 0 20em 0;
 		text-align: center;
@@ -3461,7 +3467,7 @@
 
 		/* Header */
 
-			#push {
+			#page-wrapper {
 				padding-top: 0;
 			}
 
@@ -3473,7 +3479,7 @@
 
 		/* Nav */
 
-			#push {
+			#page-wrapper {
 				-moz-backface-visibility: hidden;
 				-webkit-backface-visibility: hidden;
 				-ms-backface-visibility: hidden;
@@ -3608,7 +3614,7 @@
 						width: 5em;
 					}
 
-			body.navPanel-visible #push {
+			body.navPanel-visible #page-wrapper {
 				-moz-transform: translateX(275px);
 				-webkit-transform: translateX(275px);
 				-ms-transform: translateX(275px);
@@ -3871,192 +3877,47 @@
 
 	}
 
-		/* Omeka Search Bar Styles */
-	/* -------------------------------------------------------------------------*/
-	/* Screen - Mobile */
-	@media screen and (min-width: 40em) {
-	  /* -------------------------------------------------------------------------*/
+/* Begin additions by PennDS Team */
 
-		#search-container {
-    width: 40.67797%;
-    float: right;
-    margin-right: 0;
-    margin-right: 0; }
+/* Search Form */
 
-		#advanced-search-form label,
-  #advanced-search-form .label,
-  .field .columns.alpha {
-    width: 23.72881%;
-    float: left;
-    margin-right: 1.69492%; }
-  #advanced-search-form .inputs,
-  .field .columns.omega,
-  .field .inputs,
-  div#contribution-type-form div.inputs {
-    width: 74.57627%;
-    float: right;
-    margin-right: 0; }
+#search-container {
+    display: inline-block;
 }
 
-		#search-container {
-		  width: 100%;
-		  margin-right: 0; }
+#search-form {
+    margin: 0 0 0 0.5em;
+}
 
-		#advanced-search-form label {
-  		width: 100%; }
+#search-form input {
+    display: inline-block;
+    width: inherit;
+    color: #000;
+    vertical-align: middle;
+}
 
-		#advanced-search-form .inputs {
-  		width: 100%;
-  		margin-right: 0; }
+#search-form button {
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+    border: none;
+    margin: 0 0 0 0.5em;
+    position: relative;
+    background-color: transparent;
+    color: #fff;
+    line-height: 1.95em;
+    padding: 0.55em 1em;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 400;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 100%;
+}
 
-			/*-- Search--*/
-	#search-container #search-form {
-	  position: relative;
-	  height: 36px; }
+/* Images */
+.mp-featured {
+    max-width: 100%;
+}
 
-	#search-container input[type=text] {
-	  margin: 0;
-	  width: calc(100% - 34px); }
-
-	#search-container.with-advanced input[type=text] {
-	  width: calc(100% - 76px); }
-
-	#search-container .show-advanced,
-	#search-container button {
-	  margin: 0;
-	  width: 36px;
-	  position: absolute;
-	  top: 0;
-	  text-align: center;
-	  color: #684B98; }
-	  #search-container .show-advanced:hover,
-	  #search-container button:hover {
-	    color: #fff; }
-	  #search-container .show-advanced:after,
-	  #search-container button:after {
-	    font-family: "FontAwesome";
-	    text-indent: 0;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    bottom: 0;
-	    right: 0;
-	    line-height: 24px;
-	    padding: 6px; }
-
-	#search-container.with-advanced .show-advanced {
-	  right: 37.9992px; }
-
-	#search-container.with-advanced button {
-	  right: 0; }
-
-	#search-container .show-advanced,
-	#search-container button {
-	  text-indent: -9999px;
-	  right: 0; }
-
-	#search-container .show-advanced:after {
-	  content: "\f141"; }
-
-	#search-container button:after {
-	  content: "\f002"; }
-
-	#search-container #advanced-form {
-	  position: absolute;
-	  top: 36px;
-	  background-color: #fff;
-	  z-index: 20;
-	  width: 100%;
-	  border: 1px solid;
-	  border-color: #ddd;
-	  border-top-color: #fff;
-	  padding: 0 5%;
-	  text-align: left; }
-	  #search-container #advanced-form.closed {
-	    display: none; }
-	  #search-container #advanced-form label {
-	    font-weight: normal; }
-	  #search-container #advanced-form input[type=checkbox],
-	  #search-container #advanced-form input[type=radio] {
-	    margin: 6px 5px 0 0;
-	    float: left; }
-
-	#search-filters ul,
-	#item-filters ul {
-	  list-style-type: none;
-	  padding: 0;
-	  margin-bottom: 24px; }
-
-	#search-filters li,
-	#item-filters li {
-	  display: inline-block;
-	  vertical-align: top; }
-	  #search-filters li:not(:last-of-type),
-	  #item-filters li:not(:last-of-type) {
-	    border-right: 1px solid #444;
-	    padding-right: .5em;
-	    margin-right: .25em; }
-
-	#search-filters ul ul,
-	#item-filters ul ul {
-	  display: inline-block; }
-
-	#search-filters li li,
-	#item-filters li li {
-	  text-transform: lowercase; }
-	  #search-filters li li:not(:last-of-type):after,
-	  #item-filters li li:not(:last-of-type):after {
-	    content: ", "; }
-	  #search-filters li li:not(:last-of-type),
-	  #item-filters li li:not(:last-of-type) {
-	    border-right: 0;
-	    padding-right: 0;
-	    margin-right: .125em; }
-
-	/* -------------------------------------------------------------------------*/
-	/* Advanced Search Form */
-	.field {
-	  border-top: 1px solid #ddd;
-	  overflow: auto; }
-	  .field label {
-	    display: inline-block; }
-
-	#advanced-search-form {
-	  padding: 2em 0; }
-	  #advanced-search-form label, #advanced-search-form input, #advanced-search-form select, #advanced-search-form button {
-	    margin: .5em 0; }
-
-			/* Search */
-#search-container {
-	margin: 30px 0; }
-/* -------------------------------------------------------------------------*/
-/* Advanced Search Form */
-#advanced-search-form .field .two label {
-	width: 100% !important; }
-#advanced-search-form .field label,
-#advanced-search-form .field .label,
-#advanced-search-form .field input,
-#advanced-search-form .field select,
-#advanced-search-form .field button {
-	margin: 1em 0; }
-
-	.remove_search {
-	  padding: 6px 10px;
-	  text-indent: -9999px;
-	  width: 36px;
-	  position: relative;
-	  height: 36px;
-	  display: inline-block; }
-	  .remove_search:after {
-	    content: "\f00d";
-	    font-family: "FontAwesome";
-	    text-indent: 0;
-	    text-align: center;
-	    width: 100%;
-	    top: 0;
-	    left: 0;
-	    position: absolute;
-	    line-height: 36px; }
-
-	.search-entry:first-child .advanced-search-joiner {
-	  display: none; }
+.mp-featured-box {
+    margin: 0 !important;
+}
