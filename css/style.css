@@ -2865,7 +2865,7 @@
 /* Header */
 
 	#page-wrapper {
-		padding-top: 3em;
+		padding-top: 0;
 	}
 
 	body.landing #page-wrapper {
@@ -2913,7 +2913,7 @@
 	}
 
 	#header {
-		background: #444;
+		background: #404040;
 		color: #bbb;
 		cursor: default;
 		height: 3.4em;
@@ -2942,7 +2942,7 @@
 				border: 0;
 			}
 
-		#header nav {
+		#header nav, #main nav {
 			height: inherit;
 			line-height: inherit;
 			position: absolute;
@@ -2958,16 +2958,23 @@
 				display: inline-block;
 			}
 
-				#header nav > ul > li {
+            #main nav > ul {
+				list-style: none;
+				margin: 0.5em;
+				padding-left: 0;
+				display: inline-block;
+			}
+
+				#header nav > ul > li, #main nav > ul > li {
 					display: inline-block;
 					padding-left: 0;
 				}
 
-					#header nav > ul > li > ul {
+					#header nav > ul > li > ul, #main nav > ul > li > ul {
 						display: none;
 					}
 
-					#header nav > ul > li a {
+					#header nav > ul > li a, #main nav > ul > li a {
 						display: inline-block;
 						height: 2em;
 						line-height: 1.95em;
@@ -2982,20 +2989,27 @@
 						border: 0;
 					}
 
-						#header nav > ul > li a:not(.button).icon:before {
+                    #main nav > ul > li a:not(.button) {
+						color: #646464;
+						display: inline-block;
+						text-decoration: none;
+						border: 0;
+					}
+
+						#header nav > ul > li a:not(.button).icon:before, #main nav > ul > li a:not(.button).icon:before {
 							color: #999;
 							margin-right: 0.5em;
 						}
 
-					#header nav > ul > li:first-child {
+					#header nav > ul > li:first-child, #main nav > ul > li:first-child {
 						margin-left: 0;
 					}
 
-					#header nav > ul > li.active a:not(.button) {
+					#header nav > ul > li.active a:not(.button), #main nav > ul > li.active a:not(.button) {
 						background-color: rgba(153, 153, 153, 0.25);
 					}
 
-					#header nav > ul > li .button {
+					#header nav > ul > li .button, #main nav > ul > li .button, #main nav {
 						margin: 0 0 0 0.5em;
 						position: relative;
 					}
@@ -3048,7 +3062,7 @@
 			-webkit-animation: none;
 			-ms-animation: none;
 			animation: none;
-			background: none;
+			background: #404040;
 			color: rgba(255, 255, 255, 0.75);
 			position: absolute;
 			top: unset;
@@ -3214,12 +3228,12 @@
 		padding: 4em 0;
 	}
 
-		#main > header {
+		#main > header, .nonhome > * {
 			text-align: center;
 			margin: 0 0 3em 0;
 		}
 
-			#main > header h2 {
+			#main > header h2, #main > h1 {
 				font-size: 2.75em;
 				margin: 0;
 			}
@@ -3735,11 +3749,11 @@
 				padding: 4em 0 0 0;
 			}
 
-				#main > header {
+				#main > header, #main > h1 {
 					margin: 0 2em 1.5em 2em;
 				}
 
-					#main > header h2 {
+					#main > header h2, #main > h1 {
 						font-size: 2em;
 					}
 
@@ -3920,4 +3934,23 @@
 
 .mp-featured-box {
     margin: 0 !important;
+}
+
+/* General Layout */
+.secondary-nav {
+    float: left;
+}
+
+.pagination-nav {
+    float: right;
+}
+
+#sort-links {
+    width: 100%;
+    display: inline-block;
+}
+
+.pagination input {
+    width: 30%;
+    float: left;
 }

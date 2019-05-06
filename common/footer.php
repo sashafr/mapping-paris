@@ -1,4 +1,6 @@
-			<!-- Footer -->
+            <?php if (!is_current_url(url('/'))): ?></section><?php endif; ?>
+
+            <!-- Footer -->
 				<footer id="footer" role="contentinfo">
                     <?php if (!is_current_url(url('/'))): ?>
                         <ul class="icons">
