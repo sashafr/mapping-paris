@@ -2425,14 +2425,14 @@
 
 /* Image */
 
-	.image {
+	.image, .item-img img {
 		border-radius: 6px;
 		border: 0;
 		display: inline-block;
 		position: relative;
 	}
 
-		.image img {
+		.image img, .item-img img {
 			border-radius: 6px;
 			display: block;
 		}
@@ -2440,6 +2440,12 @@
 		.image.left {
 			float: left;
 			padding: 0 1.5em 1em 0;
+			top: 0.25em;
+		}
+
+        .item-img img {
+			float: left;
+            margin: 0 1.5em 1em 0;
 			top: 0.25em;
 		}
 
@@ -2958,23 +2964,23 @@
 				display: inline-block;
 			}
 
-            #main nav > ul {
+            #main nav > ul, #sort-links-list {
 				list-style: none;
 				margin: 0.5em;
 				padding-left: 0;
 				display: inline-block;
 			}
 
-				#header nav > ul > li, #main nav > ul > li {
+				#header nav > ul > li, #main nav > ul > li, #sort-links-list > li {
 					display: inline-block;
 					padding-left: 0;
 				}
 
-					#header nav > ul > li > ul, #main nav > ul > li > ul {
+					#header nav > ul > li > ul, #main nav > ul > li > ul, #sort-links-list > li > ul {
 						display: none;
 					}
 
-					#header nav > ul > li a, #main nav > ul > li a {
+					#header nav > ul > li a, #main nav > ul > li a, #sort-links-list > li a {
 						display: inline-block;
 						height: 2em;
 						line-height: 1.95em;
@@ -2989,27 +2995,27 @@
 						border: 0;
 					}
 
-                    #main nav > ul > li a:not(.button) {
+                    #main nav > ul > li a:not(.button), #sort-links-list > li a:not(.button) {
 						color: #646464;
 						display: inline-block;
 						text-decoration: none;
 						border: 0;
 					}
 
-						#header nav > ul > li a:not(.button).icon:before, #main nav > ul > li a:not(.button).icon:before {
+						#header nav > ul > li a:not(.button).icon:before, #main nav > ul > li a:not(.button).icon:before, #sort-links-list > li a:not(.button).icon:before {
 							color: #999;
 							margin-right: 0.5em;
 						}
 
-					#header nav > ul > li:first-child, #main nav > ul > li:first-child {
+					#header nav > ul > li:first-child, #main nav > ul > li:first-child, #sort-links-list > li:first-child {
 						margin-left: 0;
 					}
 
-					#header nav > ul > li.active a:not(.button), #main nav > ul > li.active a:not(.button) {
+					#header nav > ul > li.active a:not(.button), #main nav > ul > li.active a:not(.button), #sort-links-list > li.sorting a:not(.button) {
 						background-color: rgba(153, 153, 153, 0.25);
 					}
 
-					#header nav > ul > li .button, #main nav > ul > li .button, #main nav {
+					#header nav > ul > li .button, #main nav > ul > li .button, #main nav, #sort-links-list > li .button {
 						margin: 0 0 0 0.5em;
 						position: relative;
 					}
@@ -3948,9 +3954,43 @@
 #sort-links {
     width: 100%;
     display: inline-block;
+    text-align: left;
 }
 
 .pagination input {
     width: 30%;
     float: left;
+    height: 2em;
+}
+
+.desc a:after {
+    content: " \f0d7";
+}
+
+.asc a:after {
+    content: " \f0d8";
+}
+
+.asc a:after, .desc a:after {
+    font-family: "FontAwesome";
+}
+
+#main > h1 {
+    border-bottom: solid 2px #e5e5e5;
+    padding: 1em;
+}
+
+.hentry {
+    text-align: left;
+    background: #fff;
+    padding: 3em;
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+    border-top: solid 2px #e5e5e5;
+}
+
+/* I don't understand why this is the only thing that works and it makes me angry */
+#main > div:nth-of-type(2) {
+    border-top: 0;
 }
