@@ -2727,7 +2727,7 @@
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
-	.button {
+	.button, .btn {
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
@@ -2754,14 +2754,14 @@
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
-		.button:hover {
+		.button:hover, .btn:hover {
 			background-color: #737373;
 		}
 
 		input[type="submit"]:active,
 		input[type="reset"]:active,
 		input[type="button"]:active,
-		.button:active {
+		.button:active, .btn:active {
 			background-color: #595959;
 		}
 
