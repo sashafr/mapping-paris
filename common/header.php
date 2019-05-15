@@ -33,12 +33,14 @@
         <!-- Stylesheets -->
         <?php
         queue_css_file(array('style'));
+        queue_css_file('lightbox');
         echo head_css();
         ?>
 
         <!-- JavaScripts -->
         <?php
         // queue_js_file(array('jquery.dropotron.min', 'jquery.scrollex.min', 'browser.min', 'breakpoints.min', 'util', 'main'));
+        queue_js_file('lightbox');
         echo head_js();
         ?>
 

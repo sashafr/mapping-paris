@@ -20,23 +20,30 @@
 
 <?php
 //get a list of all tags in the exhibit
-$neatlineRecords = get_records('NeatlineRecord');
-$tagList = array();
-//add the tags to a list
-foreach($neatlineRecords as $record) {
+$db = get_db();
+$exId = nl_getExhibit()->id;
+$neatlineRecords = $db->getTable('NeatlineRecord')->fetchObjects("SELECT * FROM {$db->prefix}neatline_records nr WHERE nr.exhibit_id = $exId");
+$tagList=array();
+foreach ($neatlineRecords as $record) {
     $tags = nl_explode($record->tags);
     foreach($tags as $tag) {
-        if($tag){
-    array_push ($tagList, $tag);
-    }
+        if (!in_array($tag, $tagList)) {
+            array_push ($tagList, $tag);
+        }
     }
 }
+natcasesort($tagList);
 ?>
 
    <!-- Filters -->
-    <select id = "tagSelector"  onChange = "filterByTag()" ><option value="init">(select by tag)</option></select>
-
-    <button type="button" onclick = "showAll()">Show all</button>
+   <select id="tagSelector"  onChange="filterByTag()" >
+       <option value="init">(select by tag)</option>
+       <?php foreach ($tagList as $uniqueTag): ?>
+           <option value="<?php echo $uniqueTag; ?>"><?php echo $uniqueTag; ?></option>
+       <?php endforeach; ?>
+   </select>
+   <button type="button" class="button" onclick = "showAll()">Show all</button>
+   <hr />
 
   <div id = "bigdiv" style = "display:block">
 
@@ -57,40 +64,7 @@ foreach($neatlineRecords as $record) {
  <span> <?php echo nl_getExhibitField('narrative'); ?> </span>
  </div>
 
-Some stuff
-
-</body>
 <script type="text/javascript">
-
-function isInArray(value, array) {
-        return array.indexOf(value) > -1;
-    }
-
-//add tags to the tag selector
-function populateSelector() {
-var tagList = <?php echo json_encode($tagList);?>;
-var uniqueTagList = [];
-
-//only add tags that aren't already in the list
-for (var i = 0; i < tagList.length; i++){
-      var tag = tagList[i];
-            if (tag && isInArray(tag, uniqueTagList) == false) {
-                uniqueTagList.push(tag);
-            }
-}
-
-//sort the tags alphabetically, case-insensitive
-sortedTags = uniqueTagList.sort(function (a, b) {
-    return a.toLowerCase().localeCompare(b.toLowerCase());
-});
-
-//add the list of sorted tags to the selector
-for (var i = 0; i < sortedTags.length; i++){
-    var optionElement = document.createElement("option");
-    optionElement.innerHTML = sortedTags[i];
-    document.getElementById("tagSelector").appendChild(optionElement);
-}
-}
 
 //remove point information and return to the narrative when the user clicks the x
 function clearNarrative() {

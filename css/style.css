@@ -3982,7 +3982,7 @@
     padding: 1em;
 }
 
-.hentry {
+.hentry, .collections .collection {
     text-align: left;
     background: #fff;
     padding: 3em;
@@ -4024,5 +4024,49 @@
 }
 
 #output-format-list li {
+    display: inline-block;
+}
+
+.view-items-link {
+    width: 100%;
+    display: inline-block;
+    padding-top: 1em;
+    border-bottom: none;
+}
+
+.collections.browselanding #sort-links {
+    width: 40%;
+    text-align: left;
+    position: relative;
+    display: block;
+}
+
+#static-bubble {
+    position: fixed;
+    right: 20px;
+    left: auto;
+    z-index: 1;
+    border-top: 2px dashed black;
+    border-bottom: 2px dashed black;
+    border-left: 3px dashed black;
+    border-right: 3px dashed black;
+    box-shadow: inset 0 -1px 0 0 black, inset 0 1px 0 0 black, 0 1px 0 0 black, 0 -1px 0 0 black;
+    margin-bottom: 1px;
+}
+
+#static-bubble:close{
+    display: block;
+    width: 100px;
+}
+
+#neatline #static-bubble {
+    display: block;
+    height: 100%;
+    width: 50em;
+    margin-bottom: 35%;
+}
+
+#tagSelector {
+    width: 50%;
     display: inline-block;
 }
