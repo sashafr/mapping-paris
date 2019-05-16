@@ -21,7 +21,7 @@
 					<ul class="copyright">
 						<li><?php echo get_theme_option('Footer Text'); ?></li>
 						<li>Theme developed by the <a href="https://github.com/upenndigitalscholarship">Penn Libraries</a></li>
-						<li><a href="https://github.com/upenndigitalscholarship/mapping-pariss">Get the Code</a></li>
+						<li><a href="https://github.com/upenndigitalscholarship/mapping-paris">Get the Code</a></li>
 					</ul>
 					<?php fire_plugin_hook('public_footer', array('view'=>$this)); ?>
 				</footer>
