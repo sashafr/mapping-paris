@@ -15,8 +15,8 @@
 		<meta charset="utf-8" />
         <?php if ( $description = option('description')): ?>
             <meta name="description" content="<?php echo $description; ?>" />
-    		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <?php endif; ?>
+    	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <?php
         if (isset($title)) {
             $titleParts[] = strip_formatting($title);
